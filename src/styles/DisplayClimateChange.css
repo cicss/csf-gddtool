@@ -1,0 +1,36 @@
+/*
+///////////////////////////////////////////////////////////////////////////////
+//
+// Climate Smart Farming Growing Degree Day Calculator
+// Copyright (c) 2018 Cornell Institute for Climate Smart Solutions
+// All Rights Reserved
+//
+// This software is published under the provisions of the GNU General Public
+// License <http://www.gnu.org/licenses/>. A text copy of the license can be
+// found in the file 'LICENSE' included with this software.
+//
+// A text copy of the copyright notice, licensing conditions and disclaimers
+// is available in the file 'COPYRIGHT' included with this software.
+//
+///////////////////////////////////////////////////////////////////////////////
+*/
+
+    .climate-change-display-active{
+
+        font-style: italic;
+        font-size: 1.0em;
+        text-align: justify;
+        margin: 40px 40px 80px 40px;
+
+        position: absolute;
+        //text-align: left;
+        //font-size: 26px;
+        //height: 386px;
+        height: 346px;
+        width: 648px;
+    }
+
+    .climate-change-display-none{
+        display: none;
+    }
+

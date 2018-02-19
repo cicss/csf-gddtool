@@ -1,0 +1,76 @@
+/*
+///////////////////////////////////////////////////////////////////////////////
+//
+// Climate Smart Farming Growing Degree Day Calculator
+// Copyright (c) 2018 Cornell Institute for Climate Smart Solutions
+// All Rights Reserved
+//
+// This software is published under the provisions of the GNU General Public
+// License <http://www.gnu.org/licenses/>. A text copy of the license can be
+// found in the file 'LICENSE' included with this software.
+//
+// A text copy of the copyright notice, licensing conditions and disclaimers
+// is available in the file 'COPYRIGHT' included with this software.
+//
+///////////////////////////////////////////////////////////////////////////////
+*/
+
+    .season-button {
+        //margin-top: 2px;
+        font-size: 0.9em;
+        width: 160px;
+        //width: 170px;
+        height: 24px;
+    }
+
+    .season-label {
+        //margin-top: 2px;
+        margin-bottom: 1px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .season-button-active {
+        font-family: 'verdana';
+        font-size: 0.9em;
+        color: #000000;
+        width: 160px;
+        //width: 170px;
+        height: 24px;
+        background: #4ca20b;
+        border-color: #006600;
+        border-width: 1px;
+        border-radius: 12px;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .season-button-active:hover {
+        cursor: auto;
+    }
+
+    .season-button-inactive {
+        font-family: 'verdana';
+        font-size: 0.9em;
+        color: #000000;
+        width: 160px;
+        //width: 170px;
+        height: 24px;
+        background: #ffffff;
+        border-color: #4ca20b;
+        border-width: 2px;
+        border-radius: 12px;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .season-button-inactive:hover {
+        color: #ffffff;
+        background: #006600;
+        border-color: #4ca20b;
+    }
+
+    .season-graph-icon {
+        margin-right: 10px;
+    }
+
