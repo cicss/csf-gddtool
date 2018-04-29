@@ -299,15 +299,20 @@ export class AppStore {
                 this.updateAddress(loc_obj.address);
                 this.updateLocation(loc_obj.lat.toString(),loc_obj.lng.toString());
 
+                // handle user saved value for planting_date, assign default if necessary
                 if (locations_saved[loc_obj.id].hasOwnProperty('planting_date')) {
                     // make sure saved value is for current season. If it is not, reset to default value
-                    if (locations_saved[loc_obj.id]['planting_date'].slice(-4) === this.latestSelectableYear.toString()) {
-                        this.updatePlantingDate(moment(locations_saved[loc_obj.id]['planting_date'],'MM/DD/YYYY'));
-                    } else {
-                        this.updatePlantingDate(moment('01/01/'+this.latestSelectableYear,'MM/DD/YYYY'));
+                    if (locations_saved[loc_obj.id]['planting_date'].slice(-4) !== this.latestSelectableYear.toString()) {
+                        locations_saved[loc_obj.id]['planting_date']='01/01/'+this.latestSelectableYear.toString()
                     }
                 } else {
-                    this.updatePlantingDate(moment('01/01/'+this.latestSelectableYear,'MM/DD/YYYY'));
+                    locations_saved[loc_obj.id]['planting_date']='01/01/'+this.latestSelectableYear.toString()
+                }
+
+                // update the planting date applied to the chart only if user is viewing results for the current year.
+                // If the user is viewing historical data from previous years, we do not update the selected planting date on location change.
+                if (this.getPlantingYear === this.latestSelectableYear.toString()) {
+                        this.updatePlantingDate(moment(locations_saved[loc_obj.id]['planting_date'],'MM/DD/YYYY'));
                 }
 
                 // WRITE LOCATIONS THE USER HAS SAVED

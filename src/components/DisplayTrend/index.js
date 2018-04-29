@@ -47,15 +47,15 @@ class DisplayTrend extends Component {
             let lastDayOfSeason = moment(year+'-10-31', 'YYYY-MM-DD')
             let idxFirstFcst = data[gdd_thresh]['obs'].length
             let firstFcstDate = null
-            let lastObsDate = null
+            //let lastObsDate = null
             if (data[gdd_thresh]['firstFcstDate']==="") {
                 idxFirstFcst = data[gdd_thresh]['obs'].length
                 firstFcstDate = null
-                lastObsDate = null
+                //lastObsDate = null
             } else {
                 //firstFcstDate = moment.utc(data[gdd_thresh]['firstFcstDate'],'YYYY-MM-DD')
                 firstFcstDate = moment(data[gdd_thresh]['firstFcstDate'],'YYYY-MM-DD')
-                lastObsDate = moment(data[gdd_thresh]['firstFcstDate'],'YYYY-MM-DD').subtract(1,'days')
+                //lastObsDate = moment(data[gdd_thresh]['firstFcstDate'],'YYYY-MM-DD').subtract(1,'days')
                 idxFirstFcst = firstFcstDate.diff(firstDayOfSeason,'days')
             }
 
@@ -81,6 +81,8 @@ class DisplayTrend extends Component {
             }
 
             const getXaxisMax = () => {
+                //let startOfSeason = moment.utc(year.toString()+'-01-01','YYYY-MM-DD')
+                //let endOfSeason = moment.utc(year.toString()+'-11-01','YYYY-MM-DD')
                 let startOfSeason = Date.UTC(year,0,1)
                 let endOfSeason = Date.UTC(year,10,1)
                 let endOfData = addDays(startOfSeason, data[gdd_thresh]['obs'].length);
@@ -203,10 +205,8 @@ class DisplayTrend extends Component {
                  },
                  yAxis: { title:{ text:'Cumulative GDD', style:{"font-size":"14px", color:"#000000"}}, min: 0, gridZIndex:1, labels:{style:{color:"#000000"}}},
                  series: [{
-                     //name: "Season to Date", data: obs, type: "line", zIndex: 24, lineWidth: 2, color: "#00dd00", shadow: false, marker: { enabled: true, fillColor: "#00dd00", lineWidth: 2, lineColor: "#00dd00", radius:2, symbol:"circle" } },{
                      name: "Season to Date", data: obs.slice(0,idxFirstFcst-dayOfYear+1), type: "line", zIndex: 24, lineWidth: 2, color: "#00dd00", shadow: false, marker: { enabled: true, fillColor: "#00dd00", lineWidth: 2, lineColor: "#00dd00", radius:2, symbol:"circle" } },{
-                     //name: "6 Day Forecast", pointStart: firstFcstDate, data: obs.slice(idxFirstFcst-dayOfYear+1), type: "line", zIndex: 24, lineWidth: 2, color: "#dd0000", shadow: false, marker: { enabled: true, fillColor: "#dd0000", lineWidth: 2, lineColor: "#dd0000", radius:2, symbol:"circle" }, showInLegend: fcstInView() },{
-                     name: "6 Day Forecast", pointStart: lastObsDate, data: [null].concat(obs.slice(idxFirstFcst-dayOfYear+1)), type: "line", zIndex: 24, lineWidth: 2, color: "#dd0000", shadow: false, marker: { enabled: true, fillColor: "#dd0000", lineWidth: 2, lineColor: "#dd0000", radius:2, symbol:"circle" }, showInLegend: fcstInView() },{
+                     name: "6 Day Forecast", data: new Array(idxFirstFcst-dayOfYear+1).fill(null).concat(obs.slice(idxFirstFcst-dayOfYear+1)), type: "line", zIndex: 24, lineWidth: 2, color: "#dd0000", shadow: false, marker: { enabled: true, fillColor: "#dd0000", lineWidth: 2, lineColor: "#dd0000", radius:2, symbol:"circle" }, showInLegend: fcstInView() },{
                      name: "15 Year Average", data: recent, type: "line", zIndex: 23, lineWidth: 2, color: "#0000ff", marker: { enabled: false, states: { hover: { enabled: false }} } },{
                      name: '30 Year "Normal"', data: normal, type: "line", zIndex: 22, lineWidth: 2, color: "#B041FF", marker: { enabled: false, states: { hover: { enabled: false }} } },{
                      //name: "POR Min", data: gdd_min, type: "area", showInLegend: false, zIndex: 10, lineWidth: 2, color: "#444444", fillColor: "#ffffff", fillOpacity: 0.1, marker: { enabled: false, states: { hover: { enabled: false }} } },{
