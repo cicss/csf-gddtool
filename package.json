@@ -1,6 +1,6 @@
 {
   "name": "csf-gddtool",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "homepage": "https://cicss.github.io/csf-gddtool",
   "private": true,
   "devDependencies": {

@@ -362,8 +362,8 @@ export class AppStore {
 
     @action downloadData = () => {
             if (this.getLoaderData === false) { this.updateLoaderData(true); }
-            //const url = 'http://tools.climatesmartfarming.org/irrigationtool/tstc/?lat='+this.getLat+'&lon='+this.getLon+'&year='+this.getPlantingYear
-            const url = 'http://tools.climatesmartfarming.org/tstctool/data/?lat='+this.getLat+'&lon='+this.getLon+'&year='+this.getPlantingYear
+            //const url = 'http://tools.climatesmartfarming.org/tstctool/data/?lat='+this.getLat+'&lon='+this.getLon+'&year='+this.getPlantingYear
+            const url = 'http://tools.climatesmartfarming.org/gddtool_react/data/?lat='+this.getLat+'&lon='+this.getLon+'&year='+this.getPlantingYear
             jsonp(url, null, (err,data) => {
                 if (err) {
                     console.error(err.message);
